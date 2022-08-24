@@ -1,10 +1,13 @@
 package com.gs.schedules.entity;
 
+import java.util.Date;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Data
@@ -19,7 +22,7 @@ public class ScheduleItem {
 
     private String scheduleItem;
 
-    private String type; // either 'range (Date Range)' or 'series'
+    private String type;
 
     @ManyToOne()
     @JoinColumn(
@@ -27,4 +30,14 @@ public class ScheduleItem {
             referencedColumnName = "scheduleId"
     )
     private Schedule schedule;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modify_date")
+    private Date modifyDate;
 }
