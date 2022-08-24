@@ -44,7 +44,7 @@ public class ShcheduleServiceImpl implements ScheduleService {
             return errorSchedule;
         }
 
-        // get type of schedule: date range / series / interval
+        // get type of schedule: date range / series / interval and set to schedule items.
         scheduleDTO.getSchedule().stream().forEach(
                 schedule -> {
                     ScheduleItem scheduleItem = new ScheduleItem();
@@ -73,7 +73,7 @@ public class ShcheduleServiceImpl implements ScheduleService {
     }
 
     public String getTypeOfSchedule(String schedule) {
-        AtomicReference<String> key = null;
+        AtomicReference<String> key = new AtomicReference<>(null);
         regexConfig.regexConfigMap().entrySet().stream().forEach(
                 entry -> {
                     Pattern pattern = Pattern.compile(entry.getValue());
@@ -84,21 +84,12 @@ public class ShcheduleServiceImpl implements ScheduleService {
                 }
         );
 
-        if(key != null) {
-            if(key.get() == "dateRange") {
-                return "range";
-            } else if( key.get() ==  "timeslotOnWeekdayWithIntervals"){
-                return "interval";
-            } else {
-                return "series";
-            }
-        };
-
-        return null;
+        return key.get();
     }
 
     @Override
-    public Schedule updateSchedule(ScheduleDTO schModel) {
+    public ScheduleDTO updateSchedule(ScheduleDTO schModel) {
+
         /*Schedule scheduleRecord = scheduleRepository.findByName(schModel.getName());
         if(scheduleRecord != null) {
             scheduleItemRepository.find
