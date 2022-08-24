@@ -1,7 +1,9 @@
 package com.gs.schedules.service;
 
+import com.gs.schedules.entity.Schedule;
 import com.gs.schedules.entity.Zone;
 import com.gs.schedules.model.OffenderDTO;
+import com.gs.schedules.model.VerifyZoneResponseDTO;
 import com.gs.schedules.model.ZoneDTO;
 
 public interface ZoneService {
@@ -9,7 +11,7 @@ public interface ZoneService {
 
     Zone saveZone(Zone zone);
 
-    Zone configureSchedule(ZoneDTO zone);
+    Schedule configureSchedule(ZoneDTO zone);
 
-    String verifyStatus(ZoneDTO zone);
+    VerifyZoneResponseDTO verifyStatus(ZoneDTO zone);
 }
