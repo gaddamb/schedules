@@ -1,6 +1,8 @@
 package com.gs.schedules.controller;
 
+import com.gs.schedules.entity.Schedule;
 import com.gs.schedules.entity.Zone;
+import com.gs.schedules.model.VerifyZoneResponseDTO;
 import com.gs.schedules.model.ZoneDTO;
 import com.gs.schedules.service.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +24,12 @@ public class ZoneController {
     }
 
     @PostMapping("/configureSchedule")
-    public Zone configureZoneToSchedule(@RequestBody ZoneDTO zone) {
+    public Schedule configureZoneToSchedule(@RequestBody ZoneDTO zone) {
         return zoneService.configureSchedule(zone);
     }
 
     @PostMapping("/verifyStatus")
-    public String scheduleForZone(@RequestBody ZoneDTO zone) {
+    public VerifyZoneResponseDTO scheduleForZone(@RequestBody ZoneDTO zone) {
         return zoneService.verifyStatus(zone);
     }
 }
