@@ -141,3 +141,9 @@ response:
         "error": null
     }
 ```
+## Things to do
+1. password encryption logic using spring security
+2. updating schedule based on exception
+3. updating schedule in general
+4. not allowing updates on past date
+5. verify zone status for schedules that are on intervals
