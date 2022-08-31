@@ -15,7 +15,10 @@ public class Zone {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long zoneId;
 
-    private String zoneName;
+    @OneToOne(
+            mappedBy = "zone"
+    )
+    private Schedule schedule ;
 
     @ManyToOne
     @JoinColumn(
