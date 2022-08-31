@@ -110,7 +110,7 @@ response:
         "name": "scheduleA",
         "zone": {
             "zoneId": 1,
-            "schedule": null,
+            "zoneName": "zoneA",
             "offender": null
         },
         "createDate": "2022-08-24T23:12:54.741+00:00",
