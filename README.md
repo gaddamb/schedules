@@ -62,14 +62,14 @@ request :
 ```javascript
     HTTP/1.1 200
     Content-Type: application/json
-    { }
+    { "zoneName" : "zoneA" }
 ```
 
 response:
 ```javascript
     {
     "zoneId": 1,
-    "schedule": null,
+    "zoneName": "zoneA",
     "offender": null
 }
 ```
